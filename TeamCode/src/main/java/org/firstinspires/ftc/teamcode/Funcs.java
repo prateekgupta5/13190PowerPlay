@@ -56,23 +56,18 @@ public final class Funcs  {
     // a bunch of funcs that need more
 
     /**
-     *
+     *takes a tick input and spits out an integer
      */
 
-    //public int ticksToInches(int ticks) {
-        //return WHEEL_RADIUS * 2 * Math.PI * GEAR_RATIO * ticks / TICKS_PER_REV;
-        //need specs
-        //return 0;
-    //}
+    public int ticksToInches(int ticks) {
+        return (int) (6 * Math.PI * ticks / 537.7); //537.7 is ticks per revolution
+    }
 
     /**
-    *
+    *takes an integer input and spits out an encoder location (ticks)
     */
-
     public static int inchesToTicks(int inches) {
-        //return (int)( (inches * TICKS_PER_REV ) / ( WHEEL_RADIUS * 2 * Math.PI * GEAR_RATIO ) );
-        //needs specs
-        return 0; // temporary
+        return (int)( (inches * 537.7 ) / ( 6 * Math.PI ) );
     }
 
     /**
