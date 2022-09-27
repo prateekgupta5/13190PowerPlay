@@ -45,6 +45,13 @@ public final class Funcs  {
         }
     }
 
+    public static int turn (int num, int denom) {
+        int radius = 6;
+        num *= radius;
+        num*= Math.PI;
+        return ( inchesToTicks( num/denom) );
+    }
+
     //------------------------------------------------------------------------------------------------------------------
     // a bunch of funcs that need more
 
@@ -59,21 +66,21 @@ public final class Funcs  {
     //}
 
     /**
- *
- */
+    *
+    */
 
-    //public int inchesToTicks(int inches) {
-        //return (inches * TICKS_PER_REV ) / ( WHEEL_RADIUS * 2 * Math.PI * GEAR_RATIO )
+    public static int inchesToTicks(int inches) {
+        //return (int)( (inches * TICKS_PER_REV ) / ( WHEEL_RADIUS * 2 * Math.PI * GEAR_RATIO ) );
         //needs specs
-        //return 0;
-    //}
+        return 0; // temporary
+    }
 
     /**
      *
      */
 
-    // public void extRetArm() {
-        //needs ticks per rotation
+    // public void runArm() {
+        //needs ticks per rotation to see how far to extend the linear slides
     //}
 
     /**
