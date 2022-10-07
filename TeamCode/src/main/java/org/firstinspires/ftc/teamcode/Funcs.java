@@ -8,7 +8,9 @@ import com.qualcomm.robotcore.hardware.ServoImpl;
 public final class Funcs  {
 
     public static ServoImpl armServo, clawServo; // will hve to initialise these in a separate init
-    //public DcMotor armMotor;
+    public static DcMotor armMotor;
+
+    final double ARM_HEIGHT = 3.625;
 
     /**
     *Rotates the arm 180 degrees. It assumes that the limit on the servo would be 0 and 180.
@@ -71,18 +73,22 @@ public final class Funcs  {
     }
 
     /**
-     *
+     *raise the arm to max level
      */
-
-    // public void runArm() {
-        //needs ticks per rotation to see how far to extend the linear slides
-    //}
+    public void runArm() {
+        armMotor.setTargetPosition( (int) (537.7 * 5.3) );
+    }
 
     /**
-     *
-     */
+     *raise the arm a fraction of its height equal to scale
+    */
+    public void runArm(double scale) {
 
-    //public void runToPos(int x, int y) {
-        //..
-    //}
+        if (scale > 1 || scale < 0) {
+            return;
+        } // if the scale would exceed one or be less than 0, do nothing
+
+        armMotor.setTargetPosition( (int) (537.7 * 5.3) );
+    }
+
 }
