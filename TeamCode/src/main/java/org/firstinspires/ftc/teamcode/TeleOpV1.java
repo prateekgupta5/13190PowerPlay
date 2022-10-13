@@ -5,11 +5,15 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.ServoImpl;
 
+import static org.firstinspires.ftc.teamcode.Funcs.armMotor;
+import static org.firstinspires.ftc.teamcode.Funcs.armServo;
+import static org.firstinspires.ftc.teamcode.Funcs.clawServo;
+
 //is a one-gamepad TeleOp
 @TeleOp
 public class TeleOpV1 extends OpMode {
 
-    DcMotor lf, lb, rf, rb, armMotor;
+    DcMotor lf, lb, rf, rb;
 
     //drive code. called in loop
     private void drive() {
@@ -78,8 +82,8 @@ public class TeleOpV1 extends OpMode {
 
 
         //initialising servos
-        Funcs.armServo = (ServoImpl) hardwareMap.servo.get("arm_servo");
-        Funcs.clawServo = (ServoImpl) hardwareMap.servo.get("claw_servo");
+        armServo = (ServoImpl) hardwareMap.servo.get("arm_servo");
+        clawServo = (ServoImpl) hardwareMap.servo.get("claw_servo");
 
         telemetry.addData("servos", "initialized");
         telemetry.update();

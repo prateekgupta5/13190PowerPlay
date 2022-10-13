@@ -8,7 +8,9 @@ import com.qualcomm.robotcore.hardware.ServoImpl;
 public final class Funcs  {
 
     public static ServoImpl armServo, clawServo; // will hve to initialise these in a separate init
-    //public DcMotor armMotor;
+    public static DcMotor armMotor;
+
+    final double ARM_HEIGHT = 3.625;
 
     /**
     *Rotates the arm 180 degrees. It assumes that the limit on the servo would be 0 and 180.
@@ -56,38 +58,37 @@ public final class Funcs  {
     // a bunch of funcs that need more
 
     /**
-     *
+     *takes a tick input and spits out an integer
      */
 
-    //public int ticksToInches(int ticks) {
-        //return WHEEL_RADIUS * 2 * Math.PI * GEAR_RATIO * ticks / TICKS_PER_REV;
-        //need specs
-        //return 0;
-    //}
-
-    /**
-    *
-    */
-
-    public static int inchesToTicks(int inches) {
-        //return (int)( (inches * TICKS_PER_REV ) / ( WHEEL_RADIUS * 2 * Math.PI * GEAR_RATIO ) );
-        //needs specs
-        return 0; // temporary
+    public int ticksToInches(int ticks) {
+        return (int) (6 * Math.PI * ticks / 537.7); //537.7 is ticks per revolution
     }
 
     /**
-     *
-     */
-
-    // public void runArm() {
-        //needs ticks per rotation to see how far to extend the linear slides
-    //}
+    *takes an integer input and spits out an encoder location (ticks)
+    */
+    public static int inchesToTicks(int inches) {
+        return (int)( (inches * 537.7 ) / ( 6 * Math.PI ) );
+    }
 
     /**
-     *
+     *raise the arm to max level
      */
+    public void runArm() {
+        armMotor.setTargetPosition( (int) (537.7 * 5.3) );
+    }
 
-    //public void runToPos(int x, int y) {
-        //..
-    //}
+    /**
+     *raise the arm a fraction of its height equal to scale
+    */
+    public void runArm(double scale) {
+
+        if (scale > 1 || scale < 0) {
+            return;
+        } // if the scale would exceed one or be less than 0, do nothing
+
+        armMotor.setTargetPosition( (int) (537.7 * 5.3) );
+    }
+
 }
